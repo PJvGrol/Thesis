@@ -1,0 +1,96 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 2.9 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated as
+% required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+\datalist[entry]{nty/global//global/global}
+  \entry{ibmconsensus}{online}{}
+    \name{author}{1}{}{%
+      {{hash=CC}{%
+         family={Cachin},
+         familyi={C\bibinitperiod},
+         given={Christian},
+         giveni={C\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{CC1}
+    \strng{fullhash}{CC1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{C}
+    \field{sortinithash}{C}
+    \field{title}{Resilient Consensus Protocols for Blockchains}
+    \verb{url}
+    \verb https://www.ibm.com/blogs/research/2017/10/resilient-consensus-protoc
+    \verb ols-blockchains/
+    \endverb
+    \field{year}{2017}
+    \field{urlday}{09}
+    \field{urlmonth}{05}
+    \field{urlyear}{2018}
+  \endentry
+
+  \entry{stellarconsensus}{online}{}
+    \name{author}{1}{}{%
+      {{hash=MD}{%
+         family={Mazières},
+         familyi={M\bibinitperiod},
+         given={David},
+         giveni={D\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{MD1}
+    \strng{fullhash}{MD1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{M}
+    \field{sortinithash}{M}
+    \field{title}{On Worldwide Consensus}
+    \verb{url}
+    \verb https://www.stellar.org/papers/stellar-consensus-protocol.pdf
+    \endverb
+    \field{year}{2015}
+    \field{urlday}{16}
+    \field{urlmonth}{05}
+    \field{urlyear}{2018}
+  \endentry
+
+  \entry{bitcoinconsensus}{online}{}
+    \name{author}{1}{}{%
+      {{hash=NS}{%
+         family={Nakamoto},
+         familyi={N\bibinitperiod},
+         given={Satoshi},
+         giveni={S\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{NS1}
+    \strng{fullhash}{NS1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{N}
+    \field{sortinithash}{N}
+    \field{title}{Bitcoin: A Peer-to-Peer Electronic Cash System}
+    \verb{url}
+    \verb https://bitcoin.org/bitcoin.pdf
+    \endverb
+    \field{year}{2008}
+    \field{urlday}{16}
+    \field{urlmonth}{05}
+    \field{urlyear}{2018}
+  \endentry
+\enddatalist
+\endinput
