@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6670 64-bit) (preloaded format=pdflatex 2018.5.10)  28 MAY 2018 16:05
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6670 64-bit) (preloaded format=pdflatex 2018.5.10)  28 MAY 2018 17:15
 entering extended mode
 **./Technical_Background.tex
 (Technical_Background.tex
@@ -553,7 +553,7 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 75.
 ("C:\Users\Paul\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-[5] [6] (Technical_Background.aux)
+[5] [6] [7] (Technical_Background.aux)
 Package logreq Info: Writing requests to 'Technical_Background.run.xml'.
 \openout1 = `Technical_Background.run.xml'.
 
@@ -573,9 +573,9 @@ s/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/Paul/AppData/Local/Programs/MiKT
 eX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/Paul/AppData/Local/Pr
 ograms/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Paul/AppD
 ata/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on Technical_Background.pdf (6 pages, 76016 bytes).
+Output written on Technical_Background.pdf (7 pages, 79915 bytes).
 PDF statistics:
- 45 PDF objects out of 1000 (max. 8388607)
+ 50 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

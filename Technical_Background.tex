@@ -93,4 +93,19 @@
 	In the context of computer science, this means that there is no known efficient algorithm to solve the problem, other than trying various solutions, quite like the mechanic used in the Bitcoin consensus protocol (section 1). More specifically, the problem being hard means that the runtime of the solution finding algorithm grows linearly to the group size. Or in other words, exponentially in the amount of digits of the group size.
 	
 	Problems that are hard to solve in this sense of the word, lead to applications in cryptography. Since we can ensure a group large enough that trying all solutions becomes infeasible, it allows for cryptographic security.
+	
+	\section{Signature Scheme}
+	A signature is used in all manner of situations. An artist might add his signature to his creation to show that he was in fact the one to create it. People sign documents to show that they have created them, or to signify that they agree with the content. Because signatures are unique to a person and therefore difficult to recreate by others, a signature gives truth, validity to the signed piece. It can also be used to verify that someone is who they say they are. If they can produce the same signature, they are likely the person in the flesh.
+	
+	Digital signatures serve the exact same purpose. It is a proof of identity, genuineness. A signature scheme is a way to present and verify the authenticity of a digital message. Signature schemes work with a pair of a private and public. The private key is some piece of information that is only known to the signer, the public key is made public and used in signature verification. The signer uses this private key to sign a message, which produces a signature. This signature can be verified by others using the public key and the signare algorithm.
+	
+	In further reading, a signature will refer to a digital signature produced by a signature scheme and any digital message with such a signature has been signed.
+	
+	A classical signature is one that proves the identity of just one person. This is, however, not the only kind. Among others, there are group- and multisignatures, which are discussed below. A group signature scheme allows a signer to sign on behalf of a group, whereas a multisignature scheme allows a group to sign a document, with the result begin a joint signature that is more compact than all individual signatures separately.
+	
+	\subsection{Group Signature Scheme}
+	As explained just before, a group signature scheme allows a user to sign a message on behalf of a group. Various implementations of group signature schemes each offer different behaviour. It is possible to have a group signature be created in such a way that the signer may be determined, but also so that the signer remains obfuscated. A scheme may offer restrictions on the signature, so that it may only be produced if sufficient signers participate in the signing. In any case, a group signature implies that the group, as a whole, agrees with the content of the message signed.
+	
+	\subsection{Multi Signature Scheme}
+	A multisignature scheme is somewhat of a generalisation of a group signature scheme. A multisignature scheme will produce a joint signature for the group of signers. It finds particular use in blockchain technology because it limits the size of the signature, and therefore the size of the input that has to be sent over the network.
 \end{document}
