@@ -71,5 +71,26 @@
 	
 	Since blockchain requires that malicious participants cannot influence the result, is is important to note that a shard is somewhat of a mini blockchain, which means that sharding must happen in such a way that shards cannot be compromised.
 	
+	\section{Discrete Logarithm Problem}
+	On the set of real numbers ($\mathbb{R}$) the $\log_b$ function has been defined as the solution to the following problem.
+	\begin{defn}
+		Given $a,b,n\in\mathbb{R}$, base $b$ and power $a$ of $b$, what is n such that $a=b^n$?
+	\end{defn}
+	This same problem can also be defined over modulo $p$, which is known as the discrete logarithm problem over $\mathbb{Z}/p\mathbb{Z}$.
+	\begin{defn}[Discrete Logarithm Problem over $\mathbb{Z}/p\mathbb{Z}$]
+		Given $a,b\in\mathbb{Z}/p\mathbb{Z}$, base $b$ and power $a$ of $b$, what is n such that $a=b^n\mod{p}$?
+	\end{defn}
+	In a more generic sense, this problem can be defined over a group $G$.
+	\begin{defn}[Discrete Logarithm Problem over group $G$]
+		Given $a,b\in G$, base $b$ and power $a$ of $b$, what is n such that $a=b^n$?
+	\end{defn}
+	In particular, since an elliptic curve $E$ is a group, the problem holds over elliptic curves. Taking elliptic curve $E$ as group $G$, it follows that.
+	\begin{defn}[Elliptic Curve Discrete Logarithm Problem]
+		Given elliptic curve $E$ and points $P,Q\in E$, what is n such that $nP=Q$?
+	\end{defn}
+	Although no actual proof exists, the assumption is that the discrete logarithm problem in a well chosen group $G$ is a hard problem. The group must be well chosen, for there are groups that have a structure that allows for an algorithm to solve the problem, but there is a sufficiently large group of groups left for which no such algorithm exists.
 	
+	In the context of computer science, this means that there is no known efficient algorithm to solve the problem, other than trying various solutions, quite like the mechanic used in the Bitcoin consensus protocol (section 1). More specifically, the problem being hard means that the runtime of the solution finding algorithm grows linearly to the group size. Or in other words, exponentially in the amount of digits of the group size.
+	
+	Problems that are hard to solve in this sense of the word, lead to applications in cryptography. Since we can ensure a group large enough that trying all solutions becomes infeasible, it allows for cryptographic security.
 \end{document}
