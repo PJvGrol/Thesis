@@ -46,4 +46,17 @@
 	As long as there are sufficient reputable participants, the network can never be corrupted. Behaving dishonestly is further disincentivised by the protocol, since those participants are not trusted to be part of a quorum slice, and the influence of their opinion will then quickly be reduced. Conversely, reputable participants will be part of multiple quorum slices, which gives them a large influence over the decisions made.
 	
 	To ensure that the whole network is indeed connected and reaches network wide consensus, SCP requires that there are no disjunct quorums. Since disjunct quorum can reach their opinion separate from the network, a different agreement undermines the network wide consensus. Participants wishing to join the network have to make sure that they join a quorum in such a way that no disjunct quorums are created.
+	
+	\section{Distributed Ledger}
+	By definition, a distributed ledger\cite{distributedledger} (DL) would be shared records. This remains true in the context of blockchain technology, but that is not all that it is. Although in use it acts as if there is one ledger that everybody uses, so that everybody agrees what has happened, the technique behind it works differently.
+	
+	The most important property of a DL in the context of blockchain is the irrefutable state of truth it represents. Anything on the distributed ledger has happened exactly as described there, and no-one can alter those existing records. A DL may therefore be of interest to any group of parties looking to abolish ledger conflicts, to be able to trust that anything in the ledger has indeed happened, nothing more, nothing less, nothing else.
+	
+	In a DL system, each participant holds and keeps track of his own copy of the ledger. This happens independently, so ledger states are never directly compared. The mechanism used by the sytem ensures that each participants holds the exact same conclusion on his ledger, thereby assuring the irrefutable state of truth.
+	
+	What happens in the system, is that each participant starts at the same basis: an empty ledger. Input is then presented to all participants, who will handle the input as the system describes. Having handled the input and produced the result, a consensus protocol is used to ensure network wide agreement. Once agreement has been reached, each participant adds input to his ledger as agreed upon, ensuring that each participant reaches the same next ledger state.
+	
+	Since it may happen that participants join at a later time, mechanisms exist to ensure that the participant can catch-up to the current ledger. This is not done by presenting the ledger, but instead by presenting the input for each ledger state, and corresponding consensus. The new participant then uses that information to construct his ledger from the basis state up, eventually reaching the same ledger state as all other participants.
+	
+	Blockchain is a form of a DL, using blocks of transactions to shape the ledger and various consensus protocols to agree upon blocks to be added. Since this thesis focusses on techniques used in blockchain, any references to a chain, ledger or anything similar will mean a blockchain, a specific form of a DL.
 \end{document}

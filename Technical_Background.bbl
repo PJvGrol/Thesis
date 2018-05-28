@@ -92,5 +92,32 @@
     \field{urlmonth}{05}
     \field{urlyear}{2018}
   \endentry
+
+  \entry{distributedledger}{online}{}
+    \name{author}{1}{}{%
+      {{hash=WM}{%
+         family={Walport},
+         familyi={W\bibinitperiod},
+         given={Mark},
+         giveni={M\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{WM1}
+    \strng{fullhash}{WM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{W}
+    \field{sortinithash}{W}
+    \field{title}{Distributed Ledger Technology: beyond block chain}
+    \verb{url}
+    \verb https://assets.publishing.service.gov.uk/government/uploads/system/up
+    \verb loads/attachment_data/file/492972/gs-16-1-distributed-ledger-technolo
+    \verb gy.pdf
+    \endverb
+    \field{year}{2016}
+    \field{urlday}{02}
+    \field{urlmonth}{05}
+    \field{urlyear}{2019}
+  \endentry
 \enddatalist
 \endinput
