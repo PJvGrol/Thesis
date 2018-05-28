@@ -59,4 +59,17 @@
 	Since it may happen that participants join at a later time, mechanisms exist to ensure that the participant can catch-up to the current ledger. This is not done by presenting the ledger, but instead by presenting the input for each ledger state, and corresponding consensus. The new participant then uses that information to construct his ledger from the basis state up, eventually reaching the same ledger state as all other participants.
 	
 	Blockchain is a form of a DL, using blocks of transactions to shape the ledger and various consensus protocols to agree upon blocks to be added. Since this thesis focusses on techniques used in blockchain, any references to a chain, ledger or anything similar will mean a blockchain, a specific form of a DL.
+	
+	\section{Sharding}
+	Sharding is a concept mostly encountered in relation to databases. In that context, it refers to splitting up a large set of data in smaller pieces, shards. These shards can then be spread across distinct containers, be it a table, scheme or even different physical databases. Sharding databases can drastically improve performance and is a well-proven technique for large data sets. Google, for example, uses it for their own globally distributed database, Spanner\cite{spanner}.
+	
+	In a more generic sense sharding refers to a partitioning of workload. By dividing a system into various parts, that each handle a particular subset of the workload, more work can be done simultaniously, which improves throughput and consequently performance. At the same time, it also means that the amount of resources requires remains limited, since it is not the whole system that has to act, but just a part of it.
+	
+	Looking at sharding in blockchain\cite{omniledger}, it is important to note that in traditional blockchain technologies, each participant handles each input. That means that in a particularly large network, each participant will have to handle a large set of transactions, which uses time and resources.
+	
+	Sharding in a blockchain means dividing your participants into shards. Transactions will be handled by the shard or shards to which the participants in that particular transaction belong. A transaction that takes place between participants in different shards is known as a cross-shard transaction and requires a different method to handle than transactions happening whithin a shard. Assuming that there are not too many cross-shard transactions, sharding results in a higher throughput of transactions, since each group handles a subset of the transactions simultaniously.
+	
+	Since blockchain requires that malicious participants cannot influence the result, is is important to note that a shard is somewhat of a mini blockchain, which means that sharding must happen in such a way that shards cannot be compromised.
+	
+	
 \end{document}
