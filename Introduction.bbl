@@ -1,0 +1,145 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 2.9 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated as
+% required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+\datalist[entry]{nty/global//global/global}
+  \entry{omniledger}{online}{}
+    \name{author}{6}{}{%
+      {{hash=KKE}{%
+         family={Kokoris-Kogias},
+         familyi={K\bibinitperiod-K\bibinitperiod},
+         given={Eleftherios},
+         giveni={E\bibinitperiod},
+      }}%
+      {{hash=JP}{%
+         family={Jovanovic},
+         familyi={J\bibinitperiod},
+         given={Philipp},
+         giveni={P\bibinitperiod},
+      }}%
+      {{hash=GL}{%
+         family={Gasser},
+         familyi={G\bibinitperiod},
+         given={Linus},
+         giveni={L\bibinitperiod},
+      }}%
+      {{hash=GN}{%
+         family={Gailly},
+         familyi={G\bibinitperiod},
+         given={Nicolas},
+         giveni={N\bibinitperiod},
+      }}%
+      {{hash=SE}{%
+         family={Syta},
+         familyi={S\bibinitperiod},
+         given={Ewa},
+         giveni={E\bibinitperiod},
+      }}%
+      {{hash=FB}{%
+         family={Ford},
+         familyi={F\bibinitperiod},
+         given={Bryan},
+         giveni={B\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{KKE+1}
+    \strng{fullhash}{KKEJPGLGNSEFB1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{K}
+    \field{sortinithash}{K}
+    \field{howpublished}{Cryptology ePrint Archive, Report 2017/406}
+    \field{title}{OmniLedger: A Secure, Scale-Out, Decentralized Ledger via
+  Sharding}
+    \verb{url}
+    \verb https://eprint.iacr.org/2017/406
+    \endverb
+    \field{year}{2017}
+    \field{urlday}{20}
+    \field{urlmonth}{04}
+    \field{urlyear}{2018}
+  \endentry
+
+  \entry{randhound}{online}{}
+    \name{author}{8}{}{%
+      {{hash=SE}{%
+         family={Syta},
+         familyi={S\bibinitperiod},
+         given={Ewa},
+         giveni={E\bibinitperiod},
+      }}%
+      {{hash=JP}{%
+         family={Jovanovic},
+         familyi={J\bibinitperiod},
+         given={Philipp},
+         giveni={P\bibinitperiod},
+      }}%
+      {{hash=KEK}{%
+         family={Kogias},
+         familyi={K\bibinitperiod},
+         given={Eleftherios\bibnamedelima Kokoris},
+         giveni={E\bibinitperiod\bibinitdelim K\bibinitperiod},
+      }}%
+      {{hash=GN}{%
+         family={Gailly},
+         familyi={G\bibinitperiod},
+         given={Nicolas},
+         giveni={N\bibinitperiod},
+      }}%
+      {{hash=GL}{%
+         family={Gasser},
+         familyi={G\bibinitperiod},
+         given={Linus},
+         giveni={L\bibinitperiod},
+      }}%
+      {{hash=KI}{%
+         family={Khoffi},
+         familyi={K\bibinitperiod},
+         given={Ismail},
+         giveni={I\bibinitperiod},
+      }}%
+      {{hash=FMJ}{%
+         family={Fischer},
+         familyi={F\bibinitperiod},
+         given={Michael\bibnamedelima J.},
+         giveni={M\bibinitperiod\bibinitdelim J\bibinitperiod},
+      }}%
+      {{hash=FB}{%
+         family={Ford},
+         familyi={F\bibinitperiod},
+         given={Bryan},
+         giveni={B\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{SE+1}
+    \strng{fullhash}{SEJPKEKGNGLKIFMJFB1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{S}
+    \field{sortinithash}{S}
+    \field{howpublished}{Cryptology ePrint Archive, Report 2016/1067}
+    \field{title}{Scalable Bias-Resistant Distributed Randomness}
+    \verb{url}
+    \verb https://eprint.iacr.org/2016/1067
+    \endverb
+    \field{year}{2016}
+    \field{urlday}{20}
+    \field{urlmonth}{04}
+    \field{urlyear}{2018}
+  \endentry
+\enddatalist
+\endinput
