@@ -1,20 +1,15 @@
-\documentclass[12pt]{report}
-\usepackage[backend=bibtex8]{biblatex}
-\usepackage[utf8]{inputenc}
+\chapter{Introduction}
+This thesis has been inspired by a recent paper that introduced OmniLedger \cite{OmniLedger}: a scalable, decentralized ledger. In a world where more and more uses are found for blockchain technology, the promise of such a technology that scales in performance with the amount of users is incredibly interesting. Considering that current systems might actually perform worse when the amount of users increases, it is interesting to look at OmniLedger to see whether it can help in that regard.
 
-\addbibresource{references.bib}
-\begin{document}
-	\chapter{Introduction}
-	This thesis has been inspired by a recent paper that introduced OmniLedger\cite{omniledger}: a scalable, decentralized ledger. In a world where more and more uses are found for blockchain technology, the promise of such a technology that scales in performance with the amount of users is incredibly interesting. Considering that current systems might actually perform worse when the amount of users increases, it is interesting to look at OmniLedger to see whether it can help in that regard.
-	
-	In particular, this thesis focusses on multi-signature algorithms that may be used to improve the performance of RandHound\cite{randhound}. RandHound is used by OmniLedger to ensure that the system remains uncompromised. Since evaluation has shown that RandHound takes up more than 70\% of the total runtime in the bootstrap process of OmniLedger\cite{omniledger}, which happens periodically, improving the performance of RandHound should lead to an improvement in performance of OmniLedger.
-	\\
-	\\
-	Therefore the research question of this thesis is as follows: " .. ". To answer this question, some background is needed, before comparisons can be made between various multi-signature algorithms.
-	
-	As such the second chapter introduces algebraic varieties, leading up to an explanation of elliptic curves and some properties that are used to great effect in cryptography. The chapter concludes with an explanation of the Weil pairing on elliptic curves, which is used in one of the multi-signature algorithms used.
-	
-	The third chapter then introduces the technological background of ledgers, blockchain and multi-signatures among other terms and concepts used to clearly show the context of the research.
-	
-	In chapter four and five two different multi-signature algorithms are studied, leading up to the comparison of them in chapter six and the conclusion as to the most suitable choice for RandHound.
-\end{document}
+In particular, this thesis focuses on multisignature algorithms that may be used to improve the performance of RandHound \cite{RandHound}. RandHound is used by OmniLedger to ensure that the system remains uncompromised. Evaluation has shown that RandHound takes up more than 70\% of the total runtime in the bootstrap process of OmniLedger \cite{OmniLedger}. Since this process happens periodically, improving the performance of RandHound should lead to performance improvement of OmniLedger.
+\\
+\\
+Therefore the research question of this thesis is as follows: " .. ". To answer this question, some background is needed, before comparisons can be made between various multisignature algorithms.
+
+As such the second chapter, Mathematical Background, introduces algebraic varieties, leading up to an explanation of elliptic curves and some properties that are used to great effect in cryptography. The chapter concludes with an explanation of the Weil pairing on elliptic curves, which is used in one of the multisignature algorithms used.
+
+The third chapter, Technical Background, then introduces the technological background of ledgers, blockchain and multisignatures among other terms and concepts used to clearly show the context of the research.
+
+Chapter four, Related Work, discusses related works and contributions made by those.
+
+In chapter five, BLS Multisignature Scheme and six, Schnorr Multisignature Scheme, two different multisignature algorithms are studied, which leads up to a comparison of the two algorithms and a conclusion regarding the most suitable choice for RandHound in chapter seven.
