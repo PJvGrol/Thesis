@@ -1,5 +1,28 @@
-\chapter{BLS Multisignature Scheme}
+\chapter{Boneh-Lynn-Shacham Multisignature Scheme}
+\section{Boneh-Lynn-Shacham Signature Scheme}
+The Boneh-Lynn-Shacham \cite{BLS} (BLS) signature scheme, is a signature scheme utilising the Weil pairing to create signatures. The scheme uses the following.
+\begin{itemize}
+	\item A bilineair pairing $e:\mathbb{G}_0 \times \mathbb{G}_1 \to \mathbb{G}_T$ which is efficiently computable and non-degenerate. The three groups have prime order $q$ and the generators of $\mathbb{G}_0$ and $\mathbb{G}_1$ are $g_0$ and $g_1$ respectively.
+	\item A hash function $H_0:M\to \mathbb{G}_0$ to hash the message $M$.
+\end{itemize}
+The scheme then has three phases. In the first phase the key is generated, in the second the message is signed and in the final phase the signature is verified.
+\begin{itemize}
+	\item To generate the key, $\alpha \in \mathbb{Z}_q$ is picked randomly and then used to create $h=g_1^\alpha\in\mathbb{G}_1$. Here $\alpha$ is the private key, and $h$ the public key.
+	\item The message $m$ is then signed by creating $\sigma=H_0(m)^\alpha\in\mathbb{G}_0$. The result is therefore a single group element.
+	\item The signature is verified if $e(g_1,\sigma)=e(h,H_0(m))$ holds, otherwise the signature is a forgery.
+\end{itemize}
+To see that the verification holds, note that $e$ is bilinear, and as such $e(g^x,g^y)=e(g,g)^{xy}$. Therefore it follows that $e(g_1,\sigma)=(g_1,H_0(m)^\alpha)=(g_1,H_0(m))^\alpha=e(h,H_0(m))$ and the signature is verified.
 \section{Algorithm}
-\cite{BLSMulti}
+Boneh, Drijvers and Neven noted \cite{BLSMulti} that the intuitive multisignature algorithm using BLS, which aggregates signatures $\sigma_1,\dots,\sigma_n$ by computing $\sigma=\sigma_1\dots\sigma_n$ can be easily attacked. An attacker can register his public key $h_2$ by using $h_1$ of another user, called Alice such that $h_2=g_1^\beta\cdot h_1^{-1}$, where the attacker picks $\beta\in\mathbb{Z}_q$ himself.
+
+The attacker can now present the signature $\sigma=H_0(m)^\beta$ for some message $m$ and claim that it was signed by both him and Alice since it follows that $e(g_1,\sigma)=e(g_1,H_0(m)^\beta)=e(g_1^\beta,H_0(m))=e(h_1\cdot h_2,H_0(m))$, and that therefore the signature is genuine.
+
+The BLS multisignature scheme that is resistant against this type of attack works slightly different, but uses the same principles. As added prerequisite, the BLS multisignature scheme requires a second hash function $H_1:\mathbb{G}_1^n\to R^n$ with $R^n=\{2^0,\dots,x^128\}$.
+
+Key generation and message signing remain the same as in single use BLS, but the aggregation scheme works differently.
+\begin{itemize}
+	\item The function $H_1$ is used to calculate $(t_1,\dots,t_n)=H_1(h_1,\dots,h_n)\in R^n$. These values are used to create the aggregate signature $\sigma=\sigma_1^{t_1}\dots\sigma_n^{t_n}\in\mathbb{G}_0$.
+	\item The signature $\sigma$ is verified by computing $(t_1,\dots,t_n)=H_1(h_1,\dots,h_n)\in R^n$ and $h=h_1^{t_1}\dots h_n^{t_n}\in\mathbb{G}_1$. The signature is genuine if $e(g_1,\sigma)=e(h,H_0(m))$.
+\end{itemize}
 \section{Security}
 \section{Performance}
