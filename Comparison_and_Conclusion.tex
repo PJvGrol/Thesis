@@ -1,0 +1,11 @@
+\chapter{Comparison and Conclusion}
+This chapter will compare the two discussed multisignature algorithms, and propose the best solution to use in RandHound. The comparison will focus on the performance of the algorithms, since a greater performance leads to an even better scalable OmniLedger.
+\section{Comparison}
+Considering the two algorithms, it is easy to see that the computational requirements barely differ. Key generation works similar and both signing and verifying require basic computational actions, mostly addition and multiplication and some use of hash functions.
+
+A performance discrepency is found when regarding the signing part of the algorithm. MuSig requires a roundtrip between all participants thrice during each iteration of the algorithm. Each roundtrip suffers from network latency and network blackouts for one or more participants lead to failure of the algorithm. In this regard, BLS is clearly the superior choice. All steps of the algorithm, barring the aggregation, can be performed without a connection, only the publicly available details are needed. Even better, the algorithm doesn't fail if someone fails to respond, but simply waits until all responses have been gathered. This also gives BLS a significant edge in stability. It ensures that algorithms that have been started by a group can be completed at a later point. Therefore a network blackout does not require work to be done again or lead to a loss of data.
+
+The security proof for both algorithms work similar, using the infeasibility of the discrete logarithm problem, or a related problem, to prove that any succesful attacker has found an algorithm to solve the aforementioned problem. Therefore any differences in security remain small, and should not significantly impact the choice for either algorithm.
+
+\section{Conclusion}
+All in all the BLS multisignature scheme is the most suitable choice for RandHound. It boasts an algorithm that remains stable even under unstable network conditions, and offers the possibility for performance improvement by calculating data ahead of time and allows to check batches of multisignatures at the same time.

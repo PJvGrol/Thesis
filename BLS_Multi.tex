@@ -24,5 +24,16 @@ Key generation and message signing remain the same as in single use BLS, but the
 	\item The function $H_1$ is used to calculate $(t_1,\dots,t_n)=H_1(h_1,\dots,h_n)\in R^n$. These values are used to create the aggregate signature $\sigma=\sigma_1^{t_1}\dots\sigma_n^{t_n}\in\mathbb{G}_0$.
 	\item The signature $\sigma$ is verified by computing $(t_1,\dots,t_n)=H_1(h_1,\dots,h_n)\in R^n$ and $h=h_1^{t_1}\dots h_n^{t_n}\in\mathbb{G}_1$. The signature is genuine if $e(g_1,\sigma)=e(h,H_0(m))$.
 \end{itemize}
+Because the multisignature now requires genuine input from each participant, the attack on the previous scheme is no longer possible.
 \section{Security}
+The security of this scheme is based on the computational Diffie-Hellman assumption (co-CDH). This assumption, closely related to the discrete logarithm problem, is as follows.
+\begin{defn}
+	Take group $\mathbb{G}$ of order $q$. Given $(g,g^a,g^b)$ with $g$ a random generator and $a,b\in\{0,\dots,q-1\}$, it is infeasible to compute $g^{ab}$
+\end{defn}
+The security proof shows that any attacker that manages to forge a message in the BLS multisignature scheme, can use that very same algorithm to break co-CDH, which contradicts the statement that it is infeasible to compute.
 \section{Performance}
+Since aggregation of the signatures only requires the individual signatures and the value $H_1(h_i)$ for signer $i$, the aggregation can happen as soon as all needed signatures are published. Specifically, this means that it is not needed for all signers to participate in the process at the exact same time, completely skipping any multi-round protocol between signers.
+
+Futhermore, the BLS multisignature algorithm is set up in such a way that the aggregated public key can be computed without knowing the message $m$, since it only uses public values to calculate the key. This, of course, means that, if it is known who will be the signers, any party wishing to verify the signature can calculate the aggregate public key beforehand, allowing for greater performance.
+
+Adding to this, the scheme also allows to check a set of aggregate signatures, to allow batch verification over different messages. Considering distinct messages $m_1,\dots,m_b$ with corresponding signatures $\sigma_1,\dots,\sigma_b$, calculating $\sigma=\sigma_1\cdot\sigma_b$ allows to verify that $e(g_1,\sigma)=e(h_1,H_0(m_1))\cdots e(h_b,H_0(m_b))$.

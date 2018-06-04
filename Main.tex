@@ -7,11 +7,12 @@
 \usepackage{mathtools}
 
 \theoremstyle{plain}
-\newtheorem{thm}{Theorem}[chapter] % reset theorem numbering for each chapter
+\newtheorem{thm}{Theorem}[subsection] % reset theorem numbering for each chapter
 \theoremstyle{definition}
 \newtheorem{defn}[thm]{Definition} % definition numbers are dependent on theorem numbers
 \newtheorem{exmp}[thm]{Example} % same for example numbers
 \newtheorem{prf}[thm]{Proof} % same for proof numbers
+\newtheorem{rem}[thm]{Remark} % same for remark numbers
 
 \addbibresource{references.bib}
 
@@ -28,5 +29,6 @@
 	\input{Related_Work}
 	\input{BLS_Multi}
 	\input{Schnorr_Multi}
+	\input{Comparison_and_Conclusion}
 	\printbibliography[heading=bibintoc]
 \end{document}

@@ -1,5 +1,29 @@
 \chapter{Schnorr Multisignature Scheme}
+MuSig \cite{SchnorrMulti} is a Schnorr based multisignature scheme allowing for key aggregation with a resulting aggregated public key that functions just as in standard Schnorr schemes. 
 \section{Algorithm}
-\cite{SchnorrMulti}
+MuSig uses the following algorithm.
+\begin{itemize}
+	\item A cyclic group $\mathbb{G}$ of order $p$ and generator $g$.
+	\item Hash functions $H_1,H_2,H_3: \{0,1\}^*\to\{0,1\}^\lambda$, with $\lambda$ representing the length of the output.
+\end{itemize}
+The scheme has the same three phases as BLS, key generation, message signing and signature verification.
+\begin{itemize}
+	\item To generate the key, $\alpha\in\mathbb{Z}_p$ is sampled uniformly and randomly and used to create $h=g^\alpha$. Here $\alpha$ is the private key and $h$ the public key.
+	\item Signing a message $m$ requires a set $L=\{h_1,\dots,h_n\}$ representing all public keys involved in signing, with $h_1$ the current signer. The signer then calculates, for $i\in\{1,\dots,n\}$, $\beta_i=H_2(L,h_i)$. The aggregated public key is defined as $H=\prod_{i=1}^{n}\alpha_i^{\beta_i}$.
+	
+	Afterwards, the signer samples $r_1\in\mathbb{Z}_p$ uniformly and calculates $R_1=g^{r_1}$ and $t_1=H_1(R_1)$. He then sends $t_1$ to all other signers. Once all commitments $t_2,\dots,t_n$ have been received, the signer sends $R_1$. Upon receiving $R_2,\dots,R_n$ the signer verifies $t_i=H_1(R_i)$ before continuing.
+	
+	The signer can now compute $R=\prod_{i=1}^{n}R_i$, $c=H_3(H,R,m)$ and $s_1=r_1+c\beta_i\alpha_i\mod{p}$ and subsequently send $s_1$ to all cosigners. Upon receiving $s_2,\dots,s_n$, the signer can create $s=\sum_{i=1}^{n}s_i\mod{p}$. The resulting signature is $\sigma=(R,s)$.
+	\item To verify signature $\sigma$ on message $m$ for the set of public keys $L=\{h_1,\dots,h_n\}$, the verifier needs $\beta_i=H_1(L,h_i)$, $H=\prod_{i=1}^{n}\alpha_i^{\beta_i}$ and $c=H_3(H,R,m)$. The signature is verified if $g^s=r\prod_{i=1}^{n}h_1^{\beta_ic}=RH^c$.
+\end{itemize}
 \section{Security}
+The security of MuSig is proven by extracting the discrete logarithm problem from the challenge of the public key. Hence, if someone would be able to get a private key from a public key to forge a key in such a manner, they would have found an algorithm to solve the discrete logarithm problem, which is considered infeasible.
+
 \section{Performance}
+The various hashing, group and other operations require very little computational power and time, and are as such not of interest when regarding the performance of the algorithm.
+
+It must be noted that MuSig requires three rounds of communication, each requiring a connection to all participating parties. Hence the performance of the scheme is heavily gated by the network rate and availability.
+
+Each of the three rounds requires connections to all other participants, which means that a succesful run of the scheme requires a constant connection between the participants in order to achieve the best possible performance. Assuming a maximum network latency $\gamma$ and minimum latency $\delta$, it is easy to see that MuSig has an additional time requirement of at least $6\delta$ and at most $6\gamma$.
+
+Other than the round trips needed, there is not optimisation to be found in being able to calculate values in advance. Each step in the scheme after the first roundtrip requires new information and as such the performance of MuSig is heavily gated by the network it is operating in.
