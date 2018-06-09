@@ -5,21 +5,21 @@ A bottom-up approach is used in this chapter, which means that sections may use 
 
 The chapter first leads up to explaining blockchain, followed by an introduction to signature schemes. To end the chapter, RandHound and finally OmniLedger are explained.
 
-\section{Concensus protocol}\textsl{}
-By definition consensus is an opinion that everyone in a group agrees with or accepts. An agreement, in other words. A protocol, in the technical definition, is an established method for connecting computers so that they can exchange information. A consensus protocol is therefore a method to reach agreement between connected computers.
+\section{Concensus protocol} \label{Consensus}
+By definition consensus is an opinion that everyone in a group agrees with or accepts, an agreement, in other words. A protocol, in the technical definition, is an established method for connecting computers so that they can exchange information. A consensus protocol is therefore a method to reach agreement between connected computers.
 
 In relation to blockchain technology, a consensus protocol \cite{IBMConsensus} is a protocol used to reach agreement over input to add to the ledger, and the order in which it should be added. Blockchain technology recognises various such protocols, operating in various ways under different assumptions and requirements.
 
 Below brief explanations will be given of the consensus protocols used by Bitcoin and Stellar. The former uses a concept known as proof-of-work, the latter introduces a notion of trust.
 
 \subsection{Bitcoin}
-Conversely, the consensus protocol used by Bitcoin \cite{Bitcoin} does not require any trust in other participants. Instead it relies on a mechanism known as proof-of-work. In Bitcoin a reward goes to the participant that manages to create the next agreement. This agreement is a set of transactions, called a block, that fulfills the requirements set for the block. Once a participant has found such a block, he sends it to as many others as he can, so that his result will be on the chain, which makes the reward his. Other participant can easily verify that a block meets those requirements, after which they accept the result and forward it to others.
+Conversely, the consensus protocol used by Bitcoin \cite{Bitcoin} does not require any trust in other participants. Instead it relies on a mechanism known as proof-of-work. In Bitcoin a reward goes to the participant that manages to create the next agreement. This agreement is a set of transactions, called a block, that fulfils the requirements set for the block. Once a participant has found such a block, he sends it to as many others as he can, so that his result will be on the chain, hence making the reward his. Other participant can easily verify that a block meets those requirements, after which they accept the result and forward it to others.
 
 The protocol functions with the help of a one-way hash function. A one-way function is a function that makes it easy to compute $f(x)$ given $x$, but makes calculating $x$ from $f(x)$ practically impossible. A one-way hash function has the added property of producing output of a fixed length.
 
-What happens in the protocol used by Bitcoin is that each participant will create a block. This block then serves as input for the one-way hash function. The goal is to have a block that results in a hash with a certain amount of leading zero's. Given the block, others can easily verify that hashing the block results in a hash with a sufficient amount of leading zero's.
+In the protocol used by Bitcoin each participant will create a block. This block then serves as input for the one-way hash function. The goal is to have a block that results in a hash with a certain amount of leading zero's. Given the block, others can easily verify that hashing the block results in a hash with a sufficient amount of leading zero's.
 
-Producing a wrong block, therefore, is not in the best interest of the participant. Others will quickly refure the block, and all the effort put into creating the block will be wasted.
+Producing a wrong block, therefore, is not in the best interest of the participant. Others will quickly refuse the block, and all the effort put into creating the block will be wasted.
 
 Therefore the notion of proof-of-work for the Bitcoin consensus protocol is apt. Arriving at a sufficient result requires the participant to try various input blocks, with no way to compute one from the desired result.
 
@@ -28,118 +28,122 @@ To understand the Stellar Consensus Protocol \cite{StellarConsensus} (SCP) some 
 
 The basis of SCP is that participant trust others in their quorum slice to behave honestly, hence the notion of trust in SCP. Assuming all participant behave honestly and under the same set of input and rules, each participant should arrive at the same conclusion. After a participant reaches his conclusion, he publishes it to the others in his quorum slice. In publishing his conclusion he votes for it, as do all others in his slice. The final conclusion is the one most voted for.
 
-As long as there are sufficient reputable participants, the network can never be corrupted. Behaving dishonestly is further disincentivised by the protocol, since those participants are not trusted to be part of a quorum slice, and the influence of their opinion will then quickly be reduced. Conversely, reputable participants will be part of multiple quorum slices, which gives them a large influence over the decisions made.
+As long as there are sufficient reputable participants, the network can never be corrupted. Behaving dishonestly is further disincentivesed by the protocol, since those participants are not trusted to be part of a quorum slice, and the influence of their opinion will then quickly be reduced. Conversely, reputable participants will be part of multiple quorum slices, which gives them a large influence over the decisions made.
 
 To ensure that the whole network is indeed connected and reaches network wide consensus, SCP requires that there are no disjunct quorums. Since disjunct quorum can reach their opinion separate from the network, a different agreement undermines the network wide consensus. Participants wishing to join the network have to make sure that they join a quorum in such a way that no disjunct quorums are created.
 
-\section{Distributed Ledger}
-By definition, a distributed ledger \cite{DL} (DL) would be shared records. This remains true in the context of blockchain technology, but that is not all that it is. Although in use it acts as if there is one ledger that everybody uses, so that everybody agrees what has happened, the technique behind it works differently.
+\section{Distributed Ledger} \label{DL}
+By definition, a distributed ledger \cite{DL} (DL) can be considered as shared records. This remains true in the context of blockchain technology, but that is not all that it is. Although in use it acts as if there is one ledger that everybody uses, so that everybody agrees what has happened, the technique behind it works differently.
 
-The most important property of a DL in the context of blockchain is the irrefutable state of truth it represents. Anything on the distributed ledger has happened exactly as described there, and no-one can alter those existing records. A DL may therefore be of interest to any group of parties looking to abolish ledger conflicts, to be able to trust that anything in the ledger has indeed happened, nothing more, nothing less, nothing else.
+The most important property of a DL in the context of blockchain is the irrefutable state of truth it represents. Anything on the distributed ledger has happened exactly as described there, and no one can alter those existing records. A DL may therefore be of interest to any group of parties looking to abolish ledger conflicts, to be able to trust that anything in the ledger has indeed happened.
 
-In a DL system, each participant holds and keeps track of his own copy of the ledger. This happens independently, so ledger states are never directly compared. The mechanism used by the sytem ensures that each participants holds the exact same conclusion on his ledger, thereby assuring the irrefutable state of truth.
+In a DL system, each participant holds and keeps track of his own copy of the ledger. This happens independently, so ledger states are never directly compared. The mechanism used by the system ensures that each participants holds the exact same conclusion on his ledger, thereby assuring the irrefutable state of truth.
 
-What happens in the system, is that each participant starts at the same basis: an empty ledger. Input is then presented to all participants, who will handle the input as the system describes. Having handled the input and produced the result, a consensus protocol is used to ensure network wide agreement. Once agreement has been reached, each participant adds input to his ledger as agreed upon, ensuring that each participant reaches the same next ledger state.
+What happens in the system, is that each participant starts at the same basis: an empty ledger. Input is then presented to all participants, who will handle the input as the system describes. Having handled the input and produced the result, a consensus protocol (see \ref{Consensus}) is used to ensure network wide agreement. Once agreement has been reached, each participant adds input to his ledger as agreed upon, ensuring that each participant reaches the same next ledger state.
 
-Since it may happen that participants join at a later time, mechanisms exist to ensure that the participant can catch-up to the current ledger. This is not done by presenting the ledger, but instead by presenting the input for each ledger state, and corresponding consensus. The new participant then uses that information to construct his ledger from the basis state up, eventually reaching the same ledger state as all other participants.
+Since it may happen that participants join at a later time, mechanisms exist to ensure that the participant can catch-up to the current ledger. This is not done by presenting the ledger, but instead by presenting the input for each ledger state, and corresponding consensus. The new participant then uses that information to construct his ledger from the base, eventually reaching the same ledger state as all other participants.
 
-Blockchain is a form of a DL, using blocks of transactions to shape the ledger and various consensus protocols to agree upon blocks to be added. Since this thesis focusses on techniques used in blockchain, any references to a chain, ledger or anything similar will mean a blockchain, a specific form of a DL.
+Blockchain is a form of a DL, using blocks of transactions to shape the ledger and various consensus protocols to agree upon blocks to be added. Since this thesis focuses on techniques used in blockchain, any references to a chain, ledger or anything similar will mean a blockchain, a specific form of a DL.
 
-\section{Sharding}
-Sharding is a concept mostly encountered in relation to databases. \cite{DbSharding} In that context, it refers to splitting up a large set of data in smaller pieces, shards. These shards can then be spread across distinct containers, be it a table, scheme or even different physical databases. Sharding databases can drastically improve performance and is a well-proven technique for large data sets. Google, for example, uses it for their own globally distributed database, Spanner \cite{Spanner}.
+\section{Sharding} \label{Sharding}
+Sharding is a concept mostly encountered in relation to databases. \cite{DbSharding} In that context, it refers to splitting up a large set of data in smaller pieces, i.e. shards. These shards can then be spread across distinct containers, be it a table, scheme or even different physical databases. Sharding databases can drastically improve performance and is a well-proven technique for large data sets. Google, for example, uses it for their own globally distributed database, Spanner \cite{Spanner}.
 
-In a more generic sense sharding refers to a partitioning of workload. By dividing a system into various parts, that each handle a particular subset of the workload, more work can be done simultaniously, which improves throughput and consequently performance. At the same time, it also means that the amount of resources requires remains limited, since it is not the whole system that has to act, but just a part of it.
+In a more generic sense sharding refers to a partitioning of workload. By dividing a system into various parts, that each handle a particular subset of the workload, more work can be done simultaneously, which improves throughput and consequently performance. At the same time, it also means that the amount of resources required remains limited, since it is not the whole system that has to act, but just a part of it.
 
-Looking at sharding in blockchain \cite{OmniLedger}, it is important to note that in traditional blockchain technologies, each participant handles each input. That means that in a particularly large network, each participant will have to handle a large set of transactions, which uses time and resources.
+It is important to note that in traditional blockchain technologies, each participant handles each input. That means that in a particularly large network, each participant will have to handle a large set of transactions, which uses time and resources.
 
-Sharding in a blockchain means dividing your participants into shards \cite{OmniLedger}. Transactions will be handled by the shard or shards to which the participants in that particular transaction belong. A transaction that takes place between participants in different shards is known as a cross-shard transaction and requires a different method to handle than transactions happening whithin a shard. Assuming that there are not too many cross-shard transactions, sharding results in a higher throughput of transactions, since each group handles a subset of the transactions simultaniously.
+In contrast to traditional blockchain technologies, sharding in a blockchain means dividing your participants into shards \cite{OmniLedger}. Transactions will be handled by the shard(s) to which the participants in that particular transaction belong. A transaction that takes place between participants in different shards is known as a cross-shard transaction and requires a different method to handle than transactions happening whithin a shard. Assuming that there are not too many cross-shard transactions, sharding results in a higher throughput of transactions, since each group handles a subset of the transactions simultaneously.
 
 Since blockchain requires that malicious participants cannot influence the result, is is important to note that a shard is somewhat of a mini blockchain, which means that sharding must happen in such a way that shards cannot be compromised.
 
-\section{Discrete Logarithm Problem}
-On the set of real numbers ($\mathbb{R}$) the $\log_b$ function has been defined as the solution to the following problem.
-\begin{defn}
-	Given $a,b,n\in\mathbb{R}$, base $b$ and power $a$ of $b$, what is n such that $a=b^n$?
-\end{defn}
-This same problem can also be defined over modulo $p$, which is known as the discrete logarithm problem over $\mathbb{Z}/p\mathbb{Z}$.
-\begin{defn}[Discrete Logarithm Problem over $\mathbb{Z}/p\mathbb{Z}$]
-	Given $a,b\in\mathbb{Z}/p\mathbb{Z}$, base $b$ and power $a$ of $b$, what is n such that $a=b^n\mod{p}$?
-\end{defn}
-In a more generic sense, this problem can be defined over a group $G$.
-\begin{defn}[Discrete Logarithm Problem over group $G$]
-	Given $a,b\in G$, base $b$ and power $a$ of $b$, what is n such that $a=b^n$?
-\end{defn}
-In particular, since an elliptic curve $E$ is a group, the problem holds over elliptic curves. Taking elliptic curve $E$ as group $G$, it follows that.
-\begin{defn}[Elliptic Curve Discrete Logarithm Problem]
-	Given elliptic curve $E$ and points $P,Q\in E$, what is n such that $nP=Q$?
-\end{defn}
-Although no actual proof exists, the assumption is that the discrete logarithm problem in a well chosen group $G$ is a hard problem. The group must be well chosen, for there are groups that have a structure that allows for an algorithm to solve the problem, but there is a sufficiently large group of groups left for which no such algorithm exists.
-
-In the context of computer science, this means that there is no known efficient algorithm to solve the problem, other than trying various solutions, quite like the mechanic used in the Bitcoin consensus protocol (section 1). More specifically, the problem being hard means that the runtime of the solution finding algorithm grows linearly to the group size. Or in other words, exponentially in the amount of digits of the group size.
-
-Problems that are hard to solve in this sense of the word, lead to applications in cryptography. Since we can ensure a group large enough that trying all solutions becomes infeasible, it allows for cryptographic security.
-
-\section{Random Oracle}
+\section{Random Oracle} \label{Oracle}
 The random oracle model \cite{Oracle} was introduced by Fiat and Shamir. It is a theoretical black box that, for each unique input, presents a random output from its output domain. It is important to note that the oracle is deterministic; each unique input will produce the same output every time.
 
-\section{Forking Lemma}
-The forking lemma \cite{Forking} gives a relation between the chance of a fork and the chance of success for the attacker. Bellare and Neven state that.
-\begin{equation}
+\section{Forking Lemma} \label{Forking}
+The forking lemma gives a relation between the chance of a fork and the chance of success for the attacker. Bellare and Neven in \cite{Forking} state that.
+\begin{equation*}
 frk\ge acc\cdot(\frac{acc}{q}-\frac{1}{h})
-\end{equation}
-Here $frk$ represents the chance of obtaining two good forgeries, and $acc$ the probability of success of an adversary on a random input. The lemma shows that $frk$ is non-neglible if $acc$ is non-neglible. In other words, if the underlying problem is hard, then no adversary can forge signatures.
+\end{equation*}
+Here $frk$ represents the chance of obtaining two good forgeries, and $acc$ the probability of success of an adversary on a random input. The lemma shows that $frk$ is non-negligible if $acc$ is non-negligible. In other words, if the underlying problem is hard, then no adversary can forge signatures.
 
 \section{Signature Scheme}
-A signature is used in all manner of situations. An artist might add his signature to his creation to show that he was in fact the one to create it. People sign documents to show that they have created them, or to signify that they agree with the content. Because signatures are unique to a person and therefore difficult to recreate by others, a signature gives truth, validity to the signed piece. It can also be used to verify that someone is who they say they are. If they can produce the same signature, they are likely the person in the flesh.
+A signature is used in all manner of situations. An artist might add his signature to his creation to show that he was in fact the one to create it. People sign documents to show that they have created them, or to signify that they agree with the content. Because signatures are unique to a person and therefore difficult to recreate by others, a signature gives truth and validity to the signed piece. It can also be used to verify that someone is who they say they are. If they can produce the same signature, they are likely the person in the flesh.
 
-Digital signatures serve the exact same purpose. It is a proof of identity, genuineness. A signature scheme is a way to present and verify the authenticity of a digital message. Signature schemes work with a pair of a private and public. The private key is some piece of information that is only known to the signer, the public key is made public and used in signature verification. The signer uses this private key to sign a message, which produces a signature. This signature can be verified by others using the public key and the signare algorithm.
+Digital signatures serve the exact same purpose. It is a proof of identity. A signature scheme is a way to present and verify the authenticity of a digital message. Signature schemes work with a pair of private and public key. The private key is some piece of information that is only known to the signer, the public key is made public and used in signature verification. The signer uses this private key to sign a message, which produces a signature. This signature can be verified by others using the public key and the signature algorithm.
 
 In further reading, a signature will refer to a digital signature produced by a signature scheme and any digital message with such a signature has been signed.
 
-A classical signature is one that proves the identity of just one person. This is, however, not the only kind. Among others, there are group- and multisignatures, which are discussed below. A group signature scheme allows a signer to sign on behalf of a group, whereas a multisignature scheme allows a group to sign a document, with the result begin a joint signature that is more compact than all individual signatures separately.
+A classical signature is one that proves the identity of just one person. This is, however, not the only kind. Among others, there are group- and multi-signatures, which are discussed below. A group signature scheme allows a signer to sign on behalf of a group, whereas a multi-signature scheme allows a group to sign a document, with the result begin a joint signature that is more compact than all individual signatures separately.
 
 \subsection{Group Signature Scheme}
-As explained just before, a group signature scheme allows a user to sign a message on behalf of a group. Various implementations of group signature schemes each offer different behaviour. It is possible to have a group signature be created in such a way that the signer may be determined, but also so that the signer remains obfuscated. A scheme may offer restrictions on the signature, so that it may only be produced if sufficient signers participate in the signing. In any case, a group signature implies that the group, as a whole, agrees with the content of the message signed.
+As explained just before, a group signature scheme allows a user to sign a message on behalf of a group. There exist various implementations of group signature schemes that each offer different behaviour. It is possible to have a group signature be created in such a way that the signer may be determined, or remains obfuscated. A scheme may offer restrictions on the signature, so that it may only be produced if sufficient signers participate in the signing. In any case, a group signature implies that the group, as a whole, agrees with the content of the message signed.
 
-\subsection{Multisignature Scheme}
-A multisignature scheme is somewhat of a generalisation of a group signature scheme. A multisignature scheme will produce a joint signature for the group of signers. It finds particular use in blockchain technology because it limits the size of the signature, and therefore the size of the input that has to be sent over the network.
+\subsection{Multi-Signature Scheme} \label{MultiSig}
+A multi-signature scheme is somewhat of a generalisation of a group signature scheme. A multi-signature scheme will produce a joint signature for the group of signers. It finds particular use in blockchain technology because it limits the size of the signature, and therefore the size of the input that has to be sent over the network.
 
-\subsection{Schnorr Group}
-A Schnorr group \cite{Schnorr}, proposed by Claus P. Schnorr, inventor of the Schorr Signature Scheme, is defined as follows.
-\begin{defn}[Schnorr Group]
-	Generate $p,q,r$ such that $p=qr+1$ with $p,q$ prime. Then pick any $1<h<p$ such that $h^r\not\equiv1\mod{p}$. Then $g=h^r\mod{p}$ is the generator of the Schnorr group, which is a subgroup of $\mathbb{Z}_{p}^*$ of order $q$
-\end{defn}
-\begin{prf}[Schnorr Group]
-	It is trivial to see that the Schnorr group is indeed a group. Note that the order of $\mathbb{Z}_{p}^*$ is $p-1=qr$. Because $\mathbb{Z}_{p}^*$ is cyclic, for each divisor $d$ of $qr$ there is one subgroup of order $d$, generated by $a^{n/d}$, with $a\in\mathbb{Z}_{p}^*$. As such there is a subgroup of order $q$ generated by $a^{qr/q}$, which is precisely the $h$ picked. As such the order of the Schnorr group is indeed $q$.
-\end{prf}
-For puruposes in cryptography, $p$ is typically 1024 to 3072 bits and $q$ 160 to 256 bits, which means that the discrete logarithm problem is sufficiently hard to solve for both.
+\subsection{Schnorr Signature Scheme} \label{Schnorr}
+The Schnorr signature scheme is considered to be a simple and efficient signature scheme that sees widespread use. The algorithm works as follows.
 
-\subsection{Schnorr Signature Scheme}
-The Schnorr signature scheme is considered a simple and efficient signature scheme that sees widespread use. The algorithm works as follows.
+\subsubsection{Prerequisites}
+All users agree on a group $G$ of prime order $q$ with generator $g$. This group is typically a Schnorr group (see \ref{SchnorrGroup}), but is is not required. The users also agree on a hash function $H: \{0,1\}^*\to\mathbb{Z}_{q}^*$.
+
+\subsubsection{Key Generation}
+Each user now chooses a private key $x\in \mathbb{Z}_{q}^*$ and determines the corresponding public key $y=g^x$.
+
+\subsubsection{Message Signing}
+A message $M\in\{0,1\}^*$ is signed as follows. The signer takes $k\in\mathbb{Z}_q^*$ and calculates $r=g^k\in\{0,1\}^*$. Here $M$ and $r$ are represented as bit strings.
+
+Then $r$ and $M$ are concatenated (represented by $\parallel$) and subsequently hashed, so that $e=H(r\parallel M)$.
+
+Finally $e$ is used to determine $s=k-xe$ and the signature $(s,e)\in\mathbb{Z}_p$ is produced.
+
+\subsubsection{Signature Verification}
+The signature is verified by first calculating $r_v=g^sy^e$ and $e_v=H(r_v\parallel M)$ and then checking that $e_v=e$.
+
+\subsubsection{Proof of Signature Verification}
+To see that signature verification holds true, consider that $s=k-xe$. It follows that
+\begin{equation*}
+r_v=g^sy^e=g^{k-xe}g^{xe}=g^k=r .
+\end{equation*}
+Therefore
+\begin{equation*}
+e_v=H(r_v\parallel M)=H(r\parallel M)=e
+\end{equation*}
+and the verification check holds.
+
+Because $G,g,q,y,s,e,r$ are all public and $k,x$ private, it is easy to see that anyone can verify, but only the owner of $k$ and $x$ can produce the signature.
 \\
 \\
-First all users agree on a group $G$ of prime order $q$ with generator $g$. This group is typically a Schnorr group, but it is not required. They also agree on a hash function $H: \{0,1\}^*\to\mathbb{Z}_{q}^*$.
+It is important to note that the security of the signature scheme relies on the security of the hash algorithm used. Fiat and Shamir have argued \cite{Oracle} that the algorithm is secure if $H$ is modelled as a random oracle.
 
-With these prerequisites each user can choose a private key $x\in \mathbb{Z}_{q}^*$ which leads to the corresponding public key $y=g^x$.
-
-Signing a message $M$ goes as follows. $r=g^k, k\in \mathbb{Z}_{q}^*$. Then $e=H(r\parallel M)$, with $\parallel$ representing concatenation and $r,M\in \{0,1\}^*$, the bitstring representations. Finally $s=k-xe$ leading to the signature $(s,e)$ with $(s,e)\in \mathbb{Z}_p$.
-
-Verification of the message is done by determining $r_v=g^sy^e$ and $e_v=H(r_v\parallel M)$. The signature is genuine if $e_v=e$.
-\\
-\\
-To prove that the signature is indeed genuine if $e_v=e$, consider that $s=k-xe$. It follows that $r_v=g^sy^e=g^{k-xe}g^{xe}=g^k=r$. As such $e_v=H(r_v\parallel M)=H(r\parallel M)=e$. 
-
-Because $G,g,q,y,s,e,r$ are all public and $k,x$ private, it is easy to see that anyone can verify, but only the owner of $k$ and $x$ can have signed the message.
-\\
-\\
-It is important to note that the security of the signature scheme relies on the security of the hash algorithm used. Fiat and Shamir have argued \cite{Oracle} that the algorithm is secure if $H$ is modeled as a random oracle.
-
-Seuring went on to show \cite{Seuring} that proof of security with the Forking lemma is the best possible result for the Schnorr signature scheme (among others).
+Seuring has shown \cite{Seuring} that proof of security with the Forking lemma is the best possible result for the Schnorr signature scheme (among others).
 
 The actual securiy proof is not discussed in this thesis, for it would broaden the scope too much.
 
-\section{RandHound}
-RandHound \cite{RandHound} is a protocol to create public, verifiable and unbiasable randomness. The protocol is modeled as a client/server model, wherein the client requests a random value, that is generated by a set of RandHound servers. Each server in the set will generate his own secret, which is then shared with the client via a share that proves that the server has generated a secret according to the rules set, but that does not share the secret itself. After a certain time, the client commits to a certain set of secrets to use to create the random value. Having committed to the set, the client asks the servers to co-sign his choice. The servers then acknowledge the commitment, verify that it is genuine and respond with a Schnorr response. The client receives these responses and creates the aggregate Schnorr response, which he then presents to the servers in order to receive the actual secret. Each server then responds with his actual secret value, which the client finally combines to create the complete random value.
+\section{Public Verifiable Secret Sharing} \label{PVSS}
+A Public Verifiable Secret Sharing (PVSS) \cite{PVSS} algorithm is an algorithm such that any participating party can verify the validity of all shares.
+
+In other words, in a PVSS scheme each participant generates a secret, and shows a share to others to prove that they have generated the secret. When the actual secrets are shared, anybody can verify that the secret has not been altered.
+
+\section{RandHound} \label{RandHound}
+RandHound \cite{RandHound} is a protocol to create public, verifiable and unbiased randomness. The protocol is modelled as a client-server model, wherein the client requests a random value, that is generated by a set of RandHound servers.
+
+Each server in the set generates its own secret value and creates shares for the other participants in the set via a PVSS scheme (see \ref{PVSS}). The shares generated by the servers are sent to the client, who picks a subset of the servers to use, which fixes the output.
+
+Having picked the subset, the client asks the servers to co-sign his choice, which is done with the help of a multi-signature scheme (see \ref{MultiSig}).
+
+Each server, after acknowledging and verifying the commitment of the client, sends a Schnorr response (see \ref{Schnorr}) to the client.
+
+The client creates the aggregate Schnorr response from all received responses and presents it to the servers to receive the actual secret from each server.
+
+Each server verifies the aggregate Schnorr response and then returns the secret.
+
+Finally the client can now compute the random value using the received secrets. The resulting value is verifiable and unbiased.
 
 \section{OmniLedger}
-OmniLedger \cite{OmniLedger} is presented as a scalable distributed ledger. It uses sharding to divide the workload over participants. OmniLedger uses RandHound to divide the participants over shards, so that the chance of any shard being compromised is negligible. Moreover, shards are periodically reformed, to further reduce the chance that they become compromised.
+OmniLedger \cite{OmniLedger} is presented as a scalable distributed ledger system that remains decentralised and secure. Furthermore it promises performance on par with centralised payment processors, such as Visa.
+
+OmniLedger achieves scalability by using sharding (see \ref{Sharding}) to divide the workload over participants. To ensure that the chance that any shard is or becomes compromised remains negligible, RandHound (see \ref{RandHound}) is used to divide the participants over shards. Moreover, the shards are periodically reformed, again with use of RandHound, to not compromise the long-term stability of a shard.
+
+The level of performance is achieved by processing all non-conflicting transactions in parallel and to let all transactions only be handled by the shard(s) that it affects.
+Finally OmniLedger boasts an architecture to quickly verify low-value transactions according to a "trust-but-verify" mechanism, in which a transaction is at first quickly, and afterwards thoroughly checked. If the subsequent check shows dishonest behaviour of the first validator, this validator can be punished and the defrauded customers can be compensated. Since this mechanism is only used on low-value transactions and punishment will occur for dishonest behaviour, acting dishonestly does not offer any benefit for the first validator.

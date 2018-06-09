@@ -2,7 +2,8 @@
 \usepackage[english]{babel}
 \usepackage{amssymb}
 \usepackage{amsthm}
-\usepackage[backend=bibtex8]{biblatex}
+\usepackage{graphicx}
+\usepackage{hyperref}
 \usepackage[utf8]{inputenc}
 \usepackage{mathtools}
 
@@ -14,14 +15,93 @@
 \newtheorem{prf}[thm]{Proof} % same for proof numbers
 \newtheorem{rem}[thm]{Remark} % same for remark numbers
 
-\addbibresource{references.bib}
-
-\title{Thesis}
-\author{Paul van Grol}
-\date{\today}
-
 \begin{document}
-	\maketitle
+	\begin{titlepage} % Suppresses headers and footers on the title page
+		
+		\centering % Centre everything on the title page
+		
+		\scshape % Use small caps for all text on the title page
+		
+		%------------------------------------------------
+		%	Title
+		%------------------------------------------------
+		
+		\rule{\textwidth}{1.6pt}\vspace*{-\baselineskip}\vspace*{2pt} % Thick horizontal rule
+		\rule{\textwidth}{0.4pt} % Thin horizontal rule
+		
+		\vspace{0.75\baselineskip} % Whitespace above the title
+		
+		{Comparison of multi-signature schemes for performance improvement of OmniLedger} % Title
+		
+		\vspace{0.75\baselineskip} % Whitespace below the title
+		
+		\rule{\textwidth}{0.4pt}\vspace*{-\baselineskip}\vspace{3.2pt} % Thin horizontal rule
+		\rule{\textwidth}{1.6pt} % Thick horizontal rule
+		
+		\vspace{2\baselineskip} % Whitespace after the title block
+		
+		%------------------------------------------------
+		%	Subtitle
+		%------------------------------------------------
+		
+		Bachelor thesis for the department of Mathematics of Utrecht University % Subtitle or further description
+		
+		\vspace*{3\baselineskip} % Whitespace under the subtitle
+		
+		%------------------------------------------------
+		%	Author
+		%------------------------------------------------
+		
+		Student
+		
+		\vspace{0.5\baselineskip} % Whitespace before the editors		
+		{\scshape\Large Paul van Grol} % Editor list
+		
+		\vspace{0.5\baselineskip} % Whitespace below the editor list
+		
+		\textit{Utrecht University} % Editor affiliation
+		
+		\vspace*{2\baselineskip} % Whitespace under the subtitle
+		
+		%------------------------------------------------
+		%	Author
+		%------------------------------------------------
+		
+		Primary supervisor
+		
+		\vspace{0.5\baselineskip} % Whitespace before the editors
+		
+		{\scshape\Large Veelasha Moonsamy} % Editor list
+		
+		\vspace{0.5\baselineskip} % Whitespace below the editor list
+		
+		\textit{Utrecht University} % Editor affiliation
+		
+		\vspace*{1\baselineskip} % Whitespace under the subtitle
+		
+		%------------------------------------------------
+		%	Author
+		%------------------------------------------------
+		
+		Secondary supervisor
+		
+		\vspace{0.5\baselineskip} % Whitespace before the editors
+		
+		{\scshape\Large Damaris Schindler} % Editor list
+		
+		\vspace{0.5\baselineskip} % Whitespace below the editor list
+		
+		\textit{Utrecht University} % Editor affiliation
+		
+		\vspace{3\baselineskip} % Whitespace below the editor list
+		
+		\today
+		
+		\includegraphics{UU_logo_EN_CMYK}
+	\end{titlepage}
+	\begin{abstract}
+		To be added, do not forget!!
+	\end{abstract}
 	\tableofcontents
 	\input{Introduction}
 	\input{Mathematical_Background}
@@ -30,5 +110,9 @@
 	\input{BLS_Multi}
 	\input{Schnorr_Multi}
 	\input{Comparison_and_Conclusion}
-	\printbibliography[heading=bibintoc]
+	\addcontentsline{toc}{chapter}{Bibliography}
+	\bibliographystyle{plain}
+	\bibliography{references}
+	\appendix
+	\input{AppendixA}
 \end{document}
