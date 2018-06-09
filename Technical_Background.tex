@@ -145,5 +145,7 @@ OmniLedger \cite{OmniLedger} is presented as a scalable distributed ledger syste
 
 OmniLedger achieves scalability by using sharding (see \ref{Sharding}) to divide the workload over participants. To ensure that the chance that any shard is or becomes compromised remains negligible, RandHound (see \ref{RandHound}) is used to divide the participants over shards. Moreover, the shards are periodically reformed, again with use of RandHound, to not compromise the long-term stability of a shard.
 
+For its consensus protocol, OmniLedger uses CoSi \cite{CoSi}, a scalable witness cosigning protocol that makes use of multi-signatures. Although many such schemes can be used for CoSi, the creators of CoSi have chosen to use a Schnorr-based multi-signature scheme, which is therefore also used in OmniLedger.
+
 The level of performance is achieved by processing all non-conflicting transactions in parallel and to let all transactions only be handled by the shard(s) that it affects.
 Finally OmniLedger boasts an architecture to quickly verify low-value transactions according to a "trust-but-verify" mechanism, in which a transaction is at first quickly, and afterwards thoroughly checked. If the subsequent check shows dishonest behaviour of the first validator, this validator can be punished and the defrauded customers can be compensated. Since this mechanism is only used on low-value transactions and punishment will occur for dishonest behaviour, acting dishonestly does not offer any benefit for the first validator.
